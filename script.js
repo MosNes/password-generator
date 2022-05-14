@@ -1,4 +1,11 @@
 // Assignment code here
+var criteria = {
+  lowercase: false,
+  uppercase: false,
+  numeric: false,
+  specialchar: false
+};
+
 var generatePassword = function () {
   var password = "test";
   //calls function to set the length variable
@@ -24,23 +31,20 @@ var setPWLength = function () {
 
 var setCriteria = function() {
   //creates object to hold all criteria, defaults to false
-  var criteria = {
-    lowercase: false,
-    uppercase: false,
-    numeric: false,
-    specialchar: false
-  };
-
   criteria.lowercase = lowercasePrompt();
   console.log(criteria);
 
   return criteria;
 };
 
+
 var lowercasePrompt = function () {
   var input = window.prompt("Should the password include lowercase letters? Y/N?")
   input = input.toLowerCase();
-  while (input != "y" || input !="n") {
+  
+//while loop uses the condition that should be met (input must be either "y" or "n") and inverts it with ! 
+//to validate the input until user enters correct value
+  while (!(input === "y" || input ==="n")) {
     window.alert("Please enter a valid response.")
     input = window.prompt("Should the password include lowercase letters? Y/N?").toLowerCase();
   }
