@@ -1,10 +1,17 @@
 // Assignment code here
+var generatePassword = function () {
+  var password = "test";
 
 
-// Get references to the #generate element
+
+  return password;
+};
+
+
+// Get references to the #generate element - links to generate button in HTML
 var generateBtn = document.querySelector("#generate");
 
-// Write password to the #password input
+// Write password to the #password input - links to textarea in HTML
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
