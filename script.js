@@ -1,10 +1,55 @@
 // Assignment code here
 var generatePassword = function () {
   var password = "test";
-
-
+  //calls function to set the length variable
+  var passwordLength = setPWLength();
+  //calls function to generate the criteria object
+  var passwordCriteria = setCriteria();
+ 
 
   return password;
+};
+
+var setPWLength = function () {
+  //prompts for length of PW
+  var input = window.prompt("Please enter a number between 1 and 128 to set the length of your new password.");
+  input = parseInt(input);
+  while (!input || input<1 || input>128) {
+    window.alert("Please enter a valid number.");
+    input = parseInt(window.prompt("Please enter a number between 1 and 128 to set the length of your new password."));
+  }
+  console.log("Password length set to: "+input);
+  return input;
+};
+
+var setCriteria = function() {
+  //creates object to hold all criteria, defaults to false
+  var criteria = {
+    lowercase: false,
+    uppercase: false,
+    numeric: false,
+    specialchar: false
+  };
+
+  criteria.lowercase = lowercasePrompt();
+  console.log(criteria);
+
+  return criteria;
+};
+
+var lowercasePrompt = function () {
+  var input = window.prompt("Should the password include lowercase letters? Y/N?")
+  input = input.toLowerCase();
+  while (input != "y" || input !="n") {
+    window.alert("Please enter a valid response.")
+    input = window.prompt("Should the password include lowercase letters? Y/N?").toLowerCase();
+  }
+  if (input === "y"){
+    return true;
+  }
+  else if (input === "n") {
+    return false;
+  }
 };
 
 
