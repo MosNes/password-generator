@@ -13,7 +13,7 @@ var randomChar = function(charset){
   char = charset.charAt(Math.floor(Math.random()*charset.length));
   return char;
 
-}
+};
 
 //function that inserts a string character into a random location within the specified string
 //modified from https://stackoverflow.com/questions/4364881/inserting-string-at-position-x-of-another-string answer posted by user: nickf
@@ -21,7 +21,7 @@ var insertChar = function(string, newChar) {
   insertionPoint = Math.floor(Math.random()*string.length);
   output = string.substring(0,insertionPoint)+newChar+string.substring(insertionPoint);
   return output;
-}
+};
 
 var setPWLength = function () {
   //prompts for length of PW
@@ -102,23 +102,31 @@ var generatePassword = function () {
   if (passwordCriteria.lowercase){
     password+=randomChar(lowercaseLetters);
     potentialCharacterSet+=lowercaseLetters;
+    console.log("Adding lowercase character: "+password);
+    console.log("New potential character set: "+potentialCharacterSet);
   }
   if (passwordCriteria.uppercase){
     password+=randomChar(uppercaseLetters);
     potentialCharacterSet+=uppercaseLetters;
+    console.log("Adding uppercase character: "+password);
+    console.log("New potential character set: "+potentialCharacterSet);
   }
   if (passwordCriteria.numeric){
     password+=randomChar(numbers);
     potentialCharacterSet+=numbers;
+    console.log("Adding number: "+password);
+    console.log("New potential character set: "+potentialCharacterSet);
   }
   if (passwordCriteria.specialchar){
     password+=randomChar(specialCharacters);
     potentialCharacterSet+=specialCharacters;
+    console.log("Adding Special character: "+password);
+    console.log("New potential character set: "+potentialCharacterSet);
   }
   remainingLength = passwordLength-password.length;
 
   for (i = 0; i < remainingLength; i++) {
-    password += insertChar(password, randomChar(potentialCharacterSet));
+    password = insertChar(password, randomChar(potentialCharacterSet));
     console.log("IT GROWS IN COMPLEXITY: "+password);
   }
 
@@ -137,7 +145,7 @@ function writePassword() {
 
   passwordText.value = password;
 
-}
+};
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
