@@ -1,10 +1,5 @@
 // Assignment code here
-var criteria = {
-  lowercase: false,
-  uppercase: false,
-  numeric: false,
-  specialchar: false
-};
+
 
 var generatePassword = function () {
   var password = "test";
@@ -31,30 +26,55 @@ var setPWLength = function () {
 
 var setCriteria = function() {
   //creates object to hold all criteria, defaults to false
-  criteria.lowercase = lowercasePrompt();
+  var criteria = {
+    lowercase: false,
+    uppercase: false,
+    numeric: false,
+    specialchar: false
+  };
+  //calls functions to set each criteria to true or false
+  criteria.lowercase = yesOrNoPrompt("Should the password include lowercase letters? Y/N?");
+  criteria.uppercase = yesOrNoPrompt("Should the password include uppercase letters? Y/N?");
+  criteria.numeric = yesOrNoPrompt("Should the password include numbers? Y/N?");
+  criteria.specialchar = yesOrNoPrompt("Should the password contain any special characters? Y/N?");
+
   console.log(criteria);
 
   return criteria;
 };
 
-
-var lowercasePrompt = function () {
-  var input = window.prompt("Should the password include lowercase letters? Y/N?")
-  input = input.toLowerCase();
-  
-//while loop uses the condition that should be met (input must be either "y" or "n") and inverts it with ! 
-//to validate the input until user enters correct value
-  while (!(input === "y" || input ==="n")) {
-    window.alert("Please enter a valid response.")
-    input = window.prompt("Should the password include lowercase letters? Y/N?").toLowerCase();
+//Displays given message and only accepts a y or n response
+var yesOrNoPrompt = function (message) {
+  var input = window.prompt(message)
+  //if the user clicks cancel, input becomes a null value
+  if (input === null) {
+    return false;
   }
-  if (input === "y"){
+  else {
+    //converts input to lowercase
+    input = input.toLowerCase();
+  }
+  //while loop uses the condition that should be met (input must be either "y" or "n") and inverts it with ! 
+  //to validate the input until user enters correct value
+  while (!(input === "y" || input === "n")) {
+    window.alert("Please enter a valid response.")
+    var input = window.prompt(message)
+    if (input === null) {
+      break;
+    }
+    else {
+      input = input.toLowerCase();
+    }
+  }
+  if (input === "y") {
     return true;
   }
-  else if (input === "n") {
+  else {
     return false;
   }
 };
+
+
 
 
 // Get references to the #generate element - links to generate button in HTML
