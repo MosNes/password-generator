@@ -1,3 +1,19 @@
+/* Color Theme Swatches in RGBA
+Theme taken from color theme_bc5a46a17ad0048b0765f8f6b12199d0 by Nick Vu on color.adobe.com */
+.color-theme_bc5a46a17ad0048b0765f8f6b12199d0-1-rgba { color: rgba(15, 11, 6, 1); }
+.color-theme_bc5a46a17ad0048b0765f8f6b12199d0-2-rgba { color: rgba(62, 89, 89, 1); }
+.color-theme_bc5a46a17ad0048b0765f8f6b12199d0-3-rgba { color: rgba(118, 136, 138, 1); }
+.color-theme_bc5a46a17ad0048b0765f8f6b12199d0-4-rgba { color: rgba(242, 237, 220, 1); }
+.color-theme_bc5a46a17ad0048b0765f8f6b12199d0-5-rgba { color: rgba(217, 160, 139, 1); }
+
+:root {
+  --background-color: rgba(15, 11, 6, 1);
+  --secondary-background-color: rgba(62, 89, 89, 1);
+  --primary-text-color: rgba(242, 237, 220, 1);;
+  --secondary-text-color: rgba(118, 136, 138, 1);
+  --splash-color: rgba(217, 160, 139, 1);
+}
+
 *,
 *::before,
 *::after {
@@ -14,7 +30,8 @@ body,
 
 body {
   font-family: sans-serif;
-  background-color: #f9fbfd;
+  background-color: var(--background-color);
+  color: var(--primary-text-color);
 }
 
 .wrapper {
@@ -27,26 +44,30 @@ header {
   text-align: center;
   padding: 20px;
   padding-top: 0px;
-  color: hsl(206, 17%, 28%);
+  color: var(--primary-text-color);
 }
 
 .card {
-  background-color: hsl(0, 0%, 100%);
+  background-color: var(--secondary-background-color);
   border-radius: 5px;
   border-width: 1px;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px 0px;
-  color: hsl(206, 17%, 28%);
+  color: var(--primary-text-color);
   font-size: 18px;
   margin: 0 auto;
   max-width: 800px;
   padding: 30px 40px;
 }
 
+.card-header {
+  text-align: center;
+}
+
 .card-header::after {
   content: " ";
   display: block;
   width: 100%;
-  background: #e7e9eb;
+  background: var(--secondary-text-color);
   height: 2px;
 }
 
@@ -62,7 +83,7 @@ header {
   content: " ";
   display: block;
   width: 100%;
-  background: #e7e9eb;
+  background: var(--secondary-text-color);
   height: 2px;
 }
 
@@ -74,11 +95,11 @@ header {
 
 .btn {
   border: none;
-  background-color: hsl(360, 91%, 36%);
+  background-color: var(--splash-color);
   border-radius: 25px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 6px 0px rgba(0, 0, 0, 0.2) 0px 1px 1px
     0px;
-  color: hsl(0, 0%, 100%);
+  color: var(--background-color);
   display: inline-block;
   font-size: 22px;
   line-height: 22px;
@@ -112,10 +133,16 @@ button[disabled] {
   text-align: center;
   margin-top: 10px;
   margin-bottom: 10px;
-  border: 2px dashed #c0c7cf;
+  /* border: 2px dashed #c0c7cf; */
   border-radius: 6px;
   resize: none;
   overflow: hidden;
+  background-color: var(--secondary-text-color);
+  color: var(--primary-text-color);
+}
+
+textarea::placeholder {
+  color: var(--primary-text-color);
 }
 
 @media (max-width: 690px) {
