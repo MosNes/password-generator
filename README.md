@@ -1,5 +1,7 @@
 # Password Generator
 
+Link to deployed app: [https://mosnes.github.io/password-generator/]
+
 ## Purpose
 Project for UNC Charlotte Coding Bootcamp.
 Starter Code provided by the course.
